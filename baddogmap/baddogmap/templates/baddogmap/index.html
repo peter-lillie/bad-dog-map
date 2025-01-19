@@ -3,18 +3,18 @@
 {% load static %}
 
 {% block head %}
-<link rel="stylesheet" href="{% static 'baddogmap/css/base.css' %}">
-<link rel="stylesheet" href="{% static 'baddogmap/css/leaflet.css' %}">
-<link rel="stylesheet" href="{% static 'baddogmap/css/leaflet.photon.css' %}">
-<script src="{% static 'baddogmap/js/leaflet.js' %}"></script>
-<script src="{% static 'baddogmap/js/leaflet.photon.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="{% static 'css/leaflet.css' %}">
+<link rel="stylesheet" href="{% static 'css/leaflet.photon.css' %}">
+<script src="{% static 'js/leaflet.js' %}"></script>
+<script src="{% static 'js/leaflet.photon.js' %}"></script>
 {% endblock %}
 
 {% block body %}
 <h1>Bad Dog Map</h1>
 <p>There are no bad dogs, just bad owners. This map is intended to help you plan your next outdoor activity accordingly.</p>
-<button id="find-me" class="leaflet-bar leaflet-control leaflet-control-custom" type="button"><img src="{% static 'baddogmap/images/mylocation.svg' %}" alt="My Location"></button>
+<button id="find-me" class="leaflet-bar leaflet-control leaflet-control-custom" type="button"><img src="{% static 'images/mylocation.svg' %}" alt="My Location"></button>
 <p id="find-me-status"></p>
 <div id="map"></div>
-<script src="{% static 'baddogmap/js/index.js' %}"></script>
+<script src="{% static 'js/index.js' %}"></script>
 {% endblock %}
