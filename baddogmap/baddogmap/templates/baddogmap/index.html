@@ -1,0 +1,17 @@
+{% extends "baddogmap/base.html" %}
+
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'baddogmap/css/base.css' %}">
+<link rel="stylesheet" href="{% static 'baddogmap/css/leaflet.css' %}">
+<script src="{% static 'baddogmap/js/leaflet.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<h1>Content coming soon!</h1>
+<button id="find-me" type="button"><img src="{% static 'baddogmap/images/mylocation.svg' %}" alt="My Location"></button>
+<p id="find-me-status"></p>
+<div id="map"></div>
+<script src="{% static 'baddogmap/js/index.js' %}"></script>
+{% endblock %}
