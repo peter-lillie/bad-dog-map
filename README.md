@@ -5,3 +5,4 @@ A webapp to mark the location, reason and picture of a dog incident for the safe
 
 - [ ] Create reusable report componenet, where users can upvote, downvote and report or comment on mapped incidents.
 - [ ] Report an incident button.
+- [ ] Figure out how to protect the thunderfrost api key so I can use their map tiles.
