@@ -5,6 +5,15 @@ body {
     border: 1px solid black;
 }
 
+#find-me {
+    background-color: #fff;
+}
+
+#find-me:hover {
+    background-color: #f4f4f4;
+    cursor: pointer;
+}
+
 #map {
     width: auto;
     height: 50em;

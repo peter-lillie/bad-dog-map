@@ -27,4 +27,17 @@ function geoFindMe() {
     }
 }
 
+var findMe = L.Control.extend({
+
+    options: {
+        position: 'topleft'
+    },
+
+    onAdd: function (map) {
+        var container = L.DomUtil.get("find-me")
+        return container;
+    }
+})
+
+map.addControl(new findMe());
 document.querySelector("#find-me").addEventListener("click", geoFindMe);
