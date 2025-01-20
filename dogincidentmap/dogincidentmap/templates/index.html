@@ -16,5 +16,7 @@
 <button id="find-me" class="leaflet-bar leaflet-control leaflet-control-custom" type="button"><img src="{% static 'images/mylocation.svg' %}" alt="My Location"></button>
 <p id="find-me-status"></p>
 <div id="map"></div>
-<script src="{% static 'js/index.js' %}"></script>
+<p>{{ incidents }}</p>
+<script src="{% static 'js/index.js' %}" defer></script>
+{{ incidents|json_script }}
 {% endblock %}

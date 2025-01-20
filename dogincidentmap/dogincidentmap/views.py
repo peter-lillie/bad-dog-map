@@ -1,10 +1,12 @@
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render
-from . import forms
+from django.shortcuts import render, redirect
+from django.core import serializers
+from . import forms, models
 
 
 def index(request: HttpRequest) -> HttpResponse:
-    return render(request, template_name="index.html")
+    incidents: models.IncidentReport = serializers.serialize("json", models.IncidentReport.objects.all())
+    return render(request, template_name="index.html", context={"incidents": incidents})
 
 
 def report(request: HttpRequest) -> HttpResponse:
@@ -14,6 +16,7 @@ def report(request: HttpRequest) -> HttpResponse:
         new_incident.latitude = request.POST["latitude"]
         new_incident.longitude = request.POST["longitude"]
         new_incident.save()
+        return redirect("index")
     lat: float = request.GET.get("lat")
     lng: float = request.GET.get("lng")
     form: forms.IncidentForm = forms.IncidentForm()

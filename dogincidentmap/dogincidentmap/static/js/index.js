@@ -3,8 +3,9 @@ var map = L.map('map', {
     photonControlOptions: {
         resultsHandler: myHandler,
         placeholder: 'Find a location...',
-        position: 'topright'}
-    }).setView([51.505, -0.09], 13);
+        position: 'topright'
+    }
+}).setView([51.505, -0.09], 13);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -50,10 +51,31 @@ function myHandler(geojson) {
 };
 
 const popup = L.popup();
+const array_of_latlong = []
 
 function onMapClick(e) {
-    popup.setLatLng(e.latlng).setContent(`<a href="report?lat=${e.latlng.lat.toString()}&lng=${e.latlng.lng.toString()}">Report incident?</a>`).openOn(map);
+    if (array_of_latlong.includes(e.latlng)) {
+
+    } else {
+        popup.setLatLng(e.latlng).setContent(`<a href="report?lat=${e.latlng.lat.toString()}&lng=${e.latlng.lng.toString()}">Report incident?</a>`).openOn(map);
+    }
     console.log(e.latlng)
+}
+
+function generatePopup(fields) {
+    var marker = L.marker([fields.latitude, fields.longitude]).bindPopup(L.popup().setContent(fields.title)).addTo(map)
+    array_of_latlong.push([fields.latitude, fields.longitude])
+}
+
+const incident_data = JSON.parse(JSON.parse(
+    document.currentScript.nextElementSibling.textContent
+));
+
+for (var i = 0; i < incident_data.length; i++) {
+    var incident = incident_data[i]
+    var infields = incident.fields
+    console.log(infields)
+    generatePopup(infields)
 }
 
 map.addControl(new findMe());
