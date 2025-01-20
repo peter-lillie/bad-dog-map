@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>Report Incident</h1>
+<form action="{% url 'report' %}", method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="latitude" value="{{ lat }}">
+    <input type="hidden" name="longitude" value="{{ lng }}">
+<input type="submit" value="Submit">
+</form>
+{% endblock %}

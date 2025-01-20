@@ -49,5 +49,13 @@ function myHandler(geojson) {
     console.debug(geojson);
 };
 
+const popup = L.popup();
+
+function onMapClick(e) {
+    popup.setLatLng(e.latlng).setContent(`<a href="report?lat=${e.latlng.lat.toString()}&lng=${e.latlng.lng.toString()}">Report incident?</a>`).openOn(map);
+    console.log(e.latlng)
+}
+
 map.addControl(new findMe());
+map.on("click", onMapClick);
 document.querySelector("#find-me").addEventListener("click", geoFindMe);
